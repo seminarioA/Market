@@ -1,0 +1,294 @@
+/* =====================================================================
+   Market · Design System
+   Tokens + componentes reutilizables.
+   Tema: "Mercado fresco" — rojo de marca sobre crema cálida,
+   acentos naranja (promos) y verde (stock/disponible).
+   Compatible con Bootstrap 5 (usa utilidades propias si no está).
+   ===================================================================== */
+
+:root {
+  /* ---- Color · Marca ---- */
+  --ds-color-primary: #e60000;
+  --ds-color-primary-hover: #c50000;
+  --ds-color-primary-soft: #ffe5e5;
+
+  /* ---- Color · Fondos y superficies ---- */
+  --ds-color-bg: #fff8f0;
+  --ds-color-surface: #ffffff;
+  --ds-color-surface-alt: #fff0e6;
+  --ds-color-border: #efe3d8;
+
+  /* ---- Color · Acentos ---- */
+  --ds-color-accent: #f7941d;     /* promociones */
+  --ds-color-accent-soft: #fff2e0;
+  --ds-color-success: #2e7d32;    /* stock / fresco */
+  --ds-color-success-soft: #e6f4e7;
+  --ds-color-warning: #b26a00;
+  --ds-color-danger: #c0392b;
+
+  /* ---- Color · Texto ---- */
+  --ds-color-text: #1f1f1f;
+  --ds-color-text-muted: #6b6b6b;
+  --ds-color-text-inverse: #ffffff;
+
+  /* ---- Tipografía ---- */
+  --ds-font-sans: "Poppins", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  --ds-font-size-xs: 0.75rem;
+  --ds-font-size-sm: 0.875rem;
+  --ds-font-size-base: 1rem;
+  --ds-font-size-lg: 1.125rem;
+  --ds-font-size-xl: 1.5rem;
+  --ds-font-size-2xl: 2rem;
+  --ds-font-size-3xl: 2.75rem;
+  --ds-font-weight-regular: 400;
+  --ds-font-weight-medium: 500;
+  --ds-font-weight-bold: 700;
+  --ds-line-height: 1.5;
+
+  /* ---- Espaciado (escala 4px) ---- */
+  --ds-space-1: 0.25rem;
+  --ds-space-2: 0.5rem;
+  --ds-space-3: 0.75rem;
+  --ds-space-4: 1rem;
+  --ds-space-5: 1.5rem;
+  --ds-space-6: 2rem;
+  --ds-space-7: 3rem;
+  --ds-space-8: 4rem;
+
+  /* ---- Radios y sombras ---- */
+  --ds-radius-sm: 6px;
+  --ds-radius-md: 10px;
+  --ds-radius-lg: 16px;
+  --ds-radius-pill: 999px;
+  --ds-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --ds-shadow-md: 0 4px 14px rgba(0, 0, 0, 0.08);
+  --ds-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
+  --ds-transition: 0.2s ease;
+  --ds-container: 1200px;
+}
+
+/* ====================== Base ====================== */
+.ds-body {
+  background-color: var(--ds-color-bg);
+  color: var(--ds-color-text);
+  font-family: var(--ds-font-sans);
+  font-size: var(--ds-font-size-base);
+  line-height: var(--ds-line-height);
+}
+
+.ds-container {
+  max-width: var(--ds-container);
+  margin-inline: auto;
+  padding-inline: var(--ds-space-4);
+}
+
+.ds-section-title {
+  font-size: var(--ds-font-size-2xl);
+  font-weight: var(--ds-font-weight-bold);
+  margin-bottom: var(--ds-space-4);
+  color: var(--ds-color-text);
+}
+
+.ds-text-muted { color: var(--ds-color-text-muted); }
+
+/* ====================== Botones ====================== */
+.ds-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-space-2);
+  font-family: inherit;
+  font-weight: var(--ds-font-weight-medium);
+  font-size: var(--ds-font-size-sm);
+  padding: var(--ds-space-2) var(--ds-space-4);
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--ds-transition);
+  line-height: 1.2;
+}
+.ds-btn:hover { transform: translateY(-1px); box-shadow: var(--ds-shadow-md); }
+.ds-btn:active { transform: translateY(0); }
+
+.ds-btn--primary { background: var(--ds-color-primary); color: var(--ds-color-text-inverse); }
+.ds-btn--primary:hover { background: var(--ds-color-primary-hover); }
+
+.ds-btn--accent { background: var(--ds-color-accent); color: var(--ds-color-text-inverse); }
+.ds-btn--success { background: var(--ds-color-success); color: var(--ds-color-text-inverse); }
+
+.ds-btn--outline {
+  background: transparent;
+  border-color: var(--ds-color-primary);
+  color: var(--ds-color-primary);
+}
+.ds-btn--outline:hover { background: var(--ds-color-primary-soft); }
+
+.ds-btn--ghost {
+  background: transparent;
+  color: var(--ds-color-text);
+}
+.ds-btn--ghost:hover { background: var(--ds-color-surface-alt); }
+
+.ds-btn--sm { padding: var(--ds-space-1) var(--ds-space-3); font-size: var(--ds-font-size-xs); }
+.ds-btn--lg { padding: var(--ds-space-3) var(--ds-space-5); font-size: var(--ds-font-size-base); }
+.ds-btn--block { width: 100%; }
+
+/* ====================== Navbar ====================== */
+.ds-navbar {
+  background: var(--ds-color-primary);
+  color: var(--ds-color-text-inverse);
+  padding: var(--ds-space-3) 0;
+  box-shadow: var(--ds-shadow-sm);
+}
+.ds-navbar a, .ds-navbar .ds-nav-link {
+  color: var(--ds-color-text-inverse);
+  text-decoration: none;
+  font-weight: var(--ds-font-weight-medium);
+  margin-left: var(--ds-space-4);
+  transition: var(--ds-transition);
+}
+.ds-navbar a:hover { opacity: 0.85; }
+.ds-navbar-brand {
+  font-size: var(--ds-font-size-xl);
+  font-weight: var(--ds-font-weight-bold);
+  letter-spacing: -0.5px;
+}
+.ds-navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* ====================== Tarjetas ====================== */
+.ds-card {
+  background: var(--ds-color-surface);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-lg);
+  box-shadow: var(--ds-shadow-sm);
+  overflow: hidden;
+  transition: var(--ds-transition);
+}
+.ds-card:hover { box-shadow: var(--ds-shadow-md); transform: translateY(-2px); }
+.ds-card-body { padding: var(--ds-space-4); }
+
+.ds-card-product {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.ds-card-product img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: var(--ds-color-surface-alt);
+  padding: var(--ds-space-3);
+}
+.ds-card-product .ds-product-name {
+  font-weight: var(--ds-font-weight-bold);
+  margin: var(--ds-space-3) 0 var(--ds-space-1);
+}
+.ds-card-product .ds-product-price {
+  color: var(--ds-color-primary);
+  font-weight: var(--ds-font-weight-bold);
+  font-size: var(--ds-font-size-lg);
+}
+.ds-card-product .ds-product-unit {
+  color: var(--ds-color-text-muted);
+  font-size: var(--ds-font-size-sm);
+}
+
+/* ====================== Grid de productos ====================== */
+.ds-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--ds-space-4);
+}
+
+/* ====================== Badges / Etiquetas ====================== */
+.ds-badge {
+  display: inline-block;
+  padding: var(--ds-space-1) var(--ds-space-2);
+  border-radius: var(--ds-radius-pill);
+  font-size: var(--ds-font-size-xs);
+  font-weight: var(--ds-font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.ds-badge--promo { background: var(--ds-color-accent); color: var(--ds-color-text-inverse); }
+.ds-badge--stock { background: var(--ds-color-success-soft); color: var(--ds-color-success); }
+.ds-badge--out { background: var(--ds-color-primary-soft); color: var(--ds-color-primary); }
+.ds-price-tag {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.ds-price-tag .ds-currency { font-size: 0.7em; opacity: 0.8; }
+
+/* ====================== Formularios ====================== */
+.ds-field { margin-bottom: var(--ds-space-4); }
+.ds-label {
+  display: block;
+  font-weight: var(--ds-font-weight-medium);
+  margin-bottom: var(--ds-space-1);
+  font-size: var(--ds-font-size-sm);
+}
+.ds-input, .ds-select, .ds-textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: var(--ds-font-size-sm);
+  padding: var(--ds-space-2) var(--ds-space-3);
+  border: 1px solid var(--ds-color-border);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-color-surface);
+  color: var(--ds-color-text);
+  transition: var(--ds-transition);
+}
+.ds-input:focus, .ds-select:focus, .ds-textarea:focus {
+  outline: none;
+  border-color: var(--ds-color-primary);
+  box-shadow: 0 0 0 3px var(--ds-color-primary-soft);
+}
+
+/* ====================== Tablas ====================== */
+.ds-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--ds-color-surface);
+  border-radius: var(--ds-radius-md);
+  overflow: hidden;
+}
+.ds-table th, .ds-table td {
+  padding: var(--ds-space-3) var(--ds-space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--ds-color-border);
+  font-size: var(--ds-font-size-sm);
+}
+.ds-table thead th {
+  background: var(--ds-color-surface-alt);
+  font-weight: var(--ds-font-weight-bold);
+}
+.ds-table tbody tr:hover { background: var(--ds-color-bg); }
+
+/* ====================== Alertas ====================== */
+.ds-alert {
+  padding: var(--ds-space-3) var(--ds-space-4);
+  border-radius: var(--ds-radius-md);
+  border-left: 4px solid var(--ds-color-primary);
+  margin-bottom: var(--ds-space-4);
+  font-size: var(--ds-font-size-sm);
+}
+.ds-alert--success { background: var(--ds-color-success-soft); border-color: var(--ds-color-success); }
+.ds-alert--error { background: var(--ds-color-primary-soft); border-color: var(--ds-color-danger); }
+
+/* ====================== Utilidades ====================== */
+.ds-mt-1 { margin-top: var(--ds-space-1); }
+.ds-mt-2 { margin-top: var(--ds-space-2); }
+.ds-mt-4 { margin-top: var(--ds-space-4); }
+.ds-mb-4 { margin-bottom: var(--ds-space-4); }
+.ds-flex { display: flex; }
+.ds-gap-2 { gap: var(--ds-space-2); }
+.ds-gap-4 { gap: var(--ds-space-4); }
+.ds-text-center { text-align: center; }
+.ds-rounded { border-radius: var(--ds-radius-md); }
