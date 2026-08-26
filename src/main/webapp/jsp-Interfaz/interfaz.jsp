@@ -121,49 +121,71 @@
         <div class="max-w-7xl mx-auto px-4 mt-4 grid grid-cols-1 lg:grid-cols-12 gap-6">
 
             <!-- MENÚ LATERAL -->
+            <!-- MENÚ LATERAL (sidebar según docs de Flowbite + Tailwind) -->
             <aside class="lg:col-span-3">
-                <div class="lg:sticky lg:top-20 bg-white border border-line rounded-2xl p-4 shadow-sm">
-                    <h5 class="font-bold mb-1"><i class="bi bi-grid-3x3-gap me-2 text-brand"></i>Categorías</h5>
-                    <p class="text-xs text-gray-400 mb-3">Explora nuestro catálogo</p>
-                    <%
-                        String categoriaActiva = request.getParameter("categoria");
-                        if (categoriaActiva == null || categoriaActiva.isEmpty()) {
-                            String textoBusqueda = request.getParameter("buscar");
-                            if (textoBusqueda != null && !textoBusqueda.trim().isEmpty()) {
-                                try {
-                                    Connection con = clases.ConexionDB.getConnection();
-                                    PreparedStatement ps = con.prepareStatement("SELECT categoria FROM productos WHERE nombre LIKE ? LIMIT 1");
-                                    ps.setString(1, "%" + textoBusqueda + "%");
-                                    ResultSet rs = ps.executeQuery();
-                                    if (rs.next()) categoriaActiva = rs.getString("categoria");
-                                    rs.close(); ps.close(); con.close();
-                                } catch (Exception e) { categoriaActiva = ""; }
+                <div class="lg:sticky lg:top-20 bg-white border border-line rounded-2xl shadow-sm">
+                    <div class="h-full px-3 py-4 overflow-y-auto">
+                        <%
+                            String categoriaActiva = request.getParameter("categoria");
+                            if (categoriaActiva == null || categoriaActiva.isEmpty()) {
+                                String textoBusqueda = request.getParameter("buscar");
+                                if (textoBusqueda != null && !textoBusqueda.trim().isEmpty()) {
+                                    try {
+                                        Connection con = clases.ConexionDB.getConnection();
+                                        PreparedStatement ps = con.prepareStatement("SELECT categoria FROM productos WHERE nombre LIKE ? LIMIT 1");
+                                        ps.setString(1, "%" + textoBusqueda + "%");
+                                        ResultSet rs = ps.executeQuery();
+                                        if (rs.next()) categoriaActiva = rs.getString("categoria");
+                                        rs.close(); ps.close(); con.close();
+                                    } catch (Exception e) { categoriaActiva = ""; }
+                                }
                             }
-                        }
-                        String[] cats = {"Frutas","Verduras","Abarrotes","Bebidas","Limpieza","Cuidado Personal","Mascotas","Todos"};
-                        java.util.Map<String,String> catIcon = new java.util.HashMap<String,String>();
-                        catIcon.put("Frutas","bi-apple");
-                        catIcon.put("Verduras","bi-leaf");
-                        catIcon.put("Abarrotes","bi-basket");
-                        catIcon.put("Bebidas","bi-cup-straw");
-                        catIcon.put("Limpieza","bi-droplet");
-                        catIcon.put("Cuidado Personal","bi-heart");
-                        catIcon.put("Mascotas","bi-gift");
-                        catIcon.put("Todos","bi-grid-3x3-gap");
-                        for (String c : cats) {
-                    %>
-                    <a href="interfaz.jsp?categoria=<%= c%>"
-                       class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-700 hover:bg-sand hover:text-brand transition
-                              <%= c.equals(categoriaActiva) ? "bg-brand-soft text-brand font-semibold shadow-[inset_3px_0_0_0_#e60000]" : ""%>">
-                       <i class="bi <%= catIcon.get(c)%>"></i> <%= c%>
-                    </a>
-                    <% } %>
-                    <hr class="my-3 border-line">
-                    <h5 class="font-bold mb-2"><i class="bi bi-geo-alt me-2"></i>Ubícanos</h5>
-                    <a href="ubicacion.jsp" class="text-sm text-brand hover:underline">Ver en pantalla completa</a>
-                    <div class="mt-2">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.485933242575!2d-76.2476843!3d-13.8333986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x911063c05b97c905%3A0x51b09d4a0f70d9a8!2sMinimarket%20%26%20Licoreria%20Anais!5e0!3m2!1ses-419!2spe!4v1721173838403!5m2!1ses-419!2spe"
-                                width="100%" height="200" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy"></iframe>
+                            String[] cats = {"Frutas","Verduras","Abarrotes","Bebidas","Limpieza","Cuidado Personal","Mascotas","Todos"};
+                            java.util.Map<String,String> catIcon = new java.util.HashMap<String,String>();
+                            catIcon.put("Frutas","bi-apple");
+                            catIcon.put("Verduras","bi-leaf");
+                            catIcon.put("Abarrotes","bi-basket");
+                            catIcon.put("Bebidas","bi-cup-straw");
+                            catIcon.put("Limpieza","bi-droplet");
+                            catIcon.put("Cuidado Personal","bi-heart");
+                            catIcon.put("Mascotas","bi-gift");
+                            catIcon.put("Todos","bi-grid-3x3-gap");
+                        %>
+                        <ul class="space-y-2 font-medium">
+                            <li>
+                                <span class="block px-3 py-1 text-xs font-bold uppercase tracking-wide text-gray-400">Categorías</span>
+                            </li>
+                            <%
+                                for (String c : cats) {
+                                    boolean activo = c.equals(categoriaActiva);
+                            %>
+                            <li>
+                                <a href="interfaz.jsp?categoria=<%= c%>"
+                                   class="flex items-center px-3 py-2 rounded-lg group transition
+                                          <%= activo ? "bg-brand-soft text-brand font-semibold" : "text-gray-700 hover:bg-sand" %>">
+                                    <i class="bi <%= catIcon.get(c)%> text-lg shrink-0 transition group-hover:text-brand <%= activo ? "text-brand" : "" %>"></i>
+                                    <span class="ms-3"><%= c%></span>
+                                </a>
+                            </li>
+                            <% } %>
+                        </ul>
+
+                        <ul class="space-y-2 font-medium border-t border-line pt-4 mt-4">
+                            <li>
+                                <span class="flex items-center px-3 py-1 text-sm font-bold text-gray-700">
+                                    <i class="bi bi-geo-alt me-2 text-brand"></i> Ubícanos
+                                </span>
+                            </li>
+                            <li>
+                                <a href="ubicacion.jsp" class="flex items-center px-3 py-2 text-sm rounded-lg text-brand hover:bg-sand">
+                                    <i class="bi bi-fullscreen me-2"></i> Ver en pantalla completa
+                                </a>
+                            </li>
+                            <li class="px-3 pt-1">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.485933242575!2d-76.2476843!3d-13.8333986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x911063c05b97c905%3A0x51b09d4a0f70d9a8!2sMinimarket%20%26%20Licoreria%20Anais!5e0!3m2!1ses-419!2spe!4v1721173838403!5m2!1ses-419!2spe"
+                                        width="100%" height="180" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy"></iframe>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </aside>
