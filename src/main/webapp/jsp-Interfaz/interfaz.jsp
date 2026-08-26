@@ -276,6 +276,10 @@
                     <div class="col-span-full text-center text-gray-400 py-16">
                         <i class="bi bi-exclamation-triangle text-5xl opacity-50"></i>
                         <p class="mt-2">Estamos trabajando para brindarte un mejor servicio. Intenta más tarde.</p>
+                        <p class="mt-2 text-xs text-red-500 break-words"><%
+                            Throwable t = e;
+                            while (t != null) { %><%= t.getClass().getName() %>: <%= t.getMessage() %><br><% t = t.getCause(); }
+                        %></p>
                     </div>
                     <% } %>
 
