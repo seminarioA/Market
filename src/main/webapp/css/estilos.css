@@ -1,0 +1,170 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 21 abr. 2025, 17:51:26
+    Author     : Jerss
+*/
+
+/* Estilos DEL INDEX O GENERALES */
+body {
+    background-color: #fff8f0;
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar {
+    background-color: #e60000;
+}
+
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+
+.nav-link {
+    margin-left: 15px;
+    color: #fff
+}
+
+.side-menu {
+    background-color: #fff0e6;
+    padding: 15px;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.side-menu h5 {
+    font-weight: bold;
+}
+
+.side-menu a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.side-menu a:hover {
+    transform: scale(1.08);
+    background-color: rgb(255, 230, 180); /* Color suave en hover */
+    color: rgb(0, 0, 0); /* Contraste oscuro */
+    box-shadow: 0 0 10px rgba(255, 150, 50, 0.4); /* Brillo */
+}
+
+
+.product-card {
+    background-color: #fff8f0;
+    border: 1px solid #ffd6cc;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.btn-warm {
+    background-color: #ff7043;
+    color: white;
+}
+
+.btn-warm:hover {
+    background-color: #ff5722;
+}
+
+.carousel img {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.search-bar {
+    margin: 40px auto;
+    max-width: 600px;
+}
+
+.clock-container {
+    color: white;
+    font-size: 14px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+/* Fija altura de carruseles */
+.carrusel-fijo {
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.carrusel-fijo img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+/* Contenedor de carruseles para que estén juntos */
+.contenedor-carruseles {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+
+/* Estilos para las imágenes del producto */
+.product-card img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card img:hover {
+    transform: scale(1.1);
+}
+
+/* ESTILOS PARA EL REGISTRO.HTML */
+body {
+    background: #fff8f0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar {
+    background-color: #f7b267;
+}
+
+.hero {
+    background: url('https://images.unsplash.com/photo-1610878180933-0416f59a0f33?auto=format&fit=crop&w=1600&q=80') no-repeat center center;
+    background-size: cover;
+    height: 300px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 1px 1px 3px #000;
+}
+
+.form-container {
+    background-color: #fff3e0;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+footer {
+    background-color: #f7b267;
+    color: white;
+}
+
+/* Sobrescribe estilos para el reloj */
+#clock {
+    font-size: 0.8rem !important;
+    color: white !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
+    white-space: nowrap;
+}
