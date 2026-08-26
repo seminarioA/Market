@@ -158,7 +158,7 @@
             <!-- PRINCIPAL -->
             <main class="lg:col-span-9">
                 <!-- HERO -->
-                <div class="rounded-2xl p-6 sm:p-8 mb-6 bg-gradient-to-br from-brand to-[#ff5a36] text-white shadow-md flex flex-wrap justify-between items-center gap-4">
+                <div class="rounded-2xl p-6 sm:p-8 mb-6 bg-brand text-white shadow-md flex flex-wrap justify-between items-center gap-4">
                     <div>
                         <h1 class="text-2xl sm:text-3xl font-bold"><i class="bi bi-bag-heart me-2"></i>Tu minimarket de barrio, ahora online</h1>
                         <p class="opacity-95">Frutas, verduras, abarrotes y más — frescos y a tu alcance.</p>
