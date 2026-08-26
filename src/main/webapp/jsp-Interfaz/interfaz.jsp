@@ -69,7 +69,7 @@
                         <!-- Estado (desktop) -->
                         <span class="hidden lg:inline-flex items-center gap-2 bg-white/15 rounded-full px-3 py-1 text-sm whitespace-nowrap">
                             <span class="w-2 h-2 rounded-full bg-green-400" style="box-shadow:0 0 0 3px rgba(74,222,128,.35)"></span>
-                            Abierto <span id="clock" class="tabular-nums opacity-90"></span>
+                            Abierto
                         </span>
 
                         <!-- Carrito -->
@@ -332,16 +332,6 @@
                     const m = document.getElementById('userMenu');
                     if (m) m.classList.add('hidden');
                 }
-            });
-
-            document.addEventListener('DOMContentLoaded', function () {
-                const reloj = document.getElementById('clock');
-                if (!reloj) return;
-                function actualizarReloj() {
-                    reloj.textContent = new Date().toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit' });
-                }
-                actualizarReloj();
-                setInterval(actualizarReloj, 1000);
             });
         </script>
     </body>
