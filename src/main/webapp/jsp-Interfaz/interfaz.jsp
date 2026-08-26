@@ -123,7 +123,8 @@
             <!-- MENÚ LATERAL -->
             <aside class="lg:col-span-3">
                 <div class="lg:sticky lg:top-20 bg-white border border-line rounded-2xl p-4 shadow-sm">
-                    <h5 class="font-bold mb-3"><i class="bi bi-grid-3x3-gap me-2"></i>Categorías</h5>
+                    <h5 class="font-bold mb-1"><i class="bi bi-grid-3x3-gap me-2 text-brand"></i>Categorías</h5>
+                    <p class="text-xs text-gray-400 mb-3">Explora nuestro catálogo</p>
                     <%
                         String categoriaActiva = request.getParameter("categoria");
                         if (categoriaActiva == null || categoriaActiva.isEmpty()) {
@@ -140,10 +141,22 @@
                             }
                         }
                         String[] cats = {"Frutas","Verduras","Abarrotes","Bebidas","Limpieza","Cuidado Personal","Mascotas","Todos"};
+                        java.util.Map<String,String> catIcon = new java.util.HashMap<String,String>();
+                        catIcon.put("Frutas","bi-apple");
+                        catIcon.put("Verduras","bi-leaf");
+                        catIcon.put("Abarrotes","bi-basket");
+                        catIcon.put("Bebidas","bi-cup-straw");
+                        catIcon.put("Limpieza","bi-droplet");
+                        catIcon.put("Cuidado Personal","bi-heart");
+                        catIcon.put("Mascotas","bi-gift");
+                        catIcon.put("Todos","bi-grid-3x3-gap");
                         for (String c : cats) {
                     %>
                     <a href="interfaz.jsp?categoria=<%= c%>"
-                       class="block px-3 py-2 rounded-lg font-medium hover:bg-sand <%= c.equals(categoriaActiva) ? "bg-brand-soft text-brand font-bold border-l-4 border-brand" : ""%>"><%= c%></a>
+                       class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-700 hover:bg-sand hover:text-brand transition
+                              <%= c.equals(categoriaActiva) ? "bg-brand-soft text-brand font-semibold shadow-[inset_3px_0_0_0_#e60000]" : ""%>">
+                       <i class="bi <%= catIcon.get(c)%>"></i> <%= c%>
+                    </a>
                     <% } %>
                     <hr class="my-3 border-line">
                     <h5 class="font-bold mb-2"><i class="bi bi-geo-alt me-2"></i>Ubícanos</h5>
