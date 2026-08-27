@@ -35,7 +35,8 @@ public class ConexionDB {
         if (host == null) host = "localhost";
         if (port == null) port = "5432";
         if (db == null) db = "postgres";
-        url = "jdbc:postgresql://" + host + ":" + port + "/" + db + "?sslmode=require";
+        url = "jdbc:postgresql://" + host + ":" + port + "/" + db
+                + "?sslmode=require&prepareThreshold=0&pgbouncer=true";
         return DriverManager.getConnection(url, user, pass);
     }
 }
